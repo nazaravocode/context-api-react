@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import {TitleProvider} from './Context';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class  App extends Component {
+    state = {
+        title: 'app',
+        text: " hello"
+    };
+    clickHandler = () => {this.setState({title: 'After Click'})}
+    acha = "Acha";
+ render() {
+     return (
+         <TitleProvider value={{ text:this.state.text,
+             title: this.state.title,
+             clickHandler: this.clickHandler}}>
+             <Dashboard/>
+         </TitleProvider>
+
+     )
+
+ }
+
 }
 
 export default App;
